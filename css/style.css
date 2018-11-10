@@ -1,0 +1,48 @@
+body{
+  background-color: #e8e8e8;
+}
+
+.grid{
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.card{
+  margin: 10px;
+  width: 150px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0px 2px 14px #ccc;
+  transition-delay: 800ms;
+  transition: transform 1700ms,
+  opacity 1700ms,
+  visibility 1700ms;
+}
+.front{
+  background-color: #7480ad;
+  transition: visibility 800ms,
+  transform 800ms;
+}
+.front, .back{
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.selected{
+  visibility: hidden;
+  transform: rotateY(90deg);
+}
+
+.match {
+  transform: translateY(-200px);
+  opacity: 0;
+  visibility: hidden;
+}
+
