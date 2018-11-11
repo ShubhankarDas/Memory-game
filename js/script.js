@@ -61,25 +61,34 @@ let resetCard = () =>{
   clickCount = 0;
 }
 
+let cardsMatch = ()=>{
+  let selectedElements = document.querySelectorAll('.selected')
+  for (i = 0; i < selectedElements.length; i++) {
+    selectedElements[i].classList.remove('selected');
+    selectedElements[i].classList.add('match');
+  }
+  selected = false;
+  clickCount = 0;
+}
+
 grid.addEventListener('click',function(e){
   if(clickCount === 2){return}
 
   let clicked = e.target;
-  if (clicked.classList.contains('grid') || clicked.classList.contains('selected') || clicked.classList.contains('back')) {
+  let parent = clicked.parentElement;
+  if (clicked.classList.contains('grid') || parent.classList.contains('selected') || clicked.classList.contains('back')) {
     return
   }
 
-  clicked.classList.add('selected')
+  parent.classList.add('selected')
   clickCount++
 
   if (selected){
     if(selected === clicked.dataset.name){
-      let selectedElements = document.querySelectorAll('.selected')
-      for(i = 0; i < selectedElements.length; i++){
-        selectedElements[i].parentElement.classList.add('match');
-      }
+      setTimeout(cardsMatch, delay);
+    }else{
+      setTimeout(resetCard, delay);
     }
-    setTimeout(resetCard, delay);
   }else {
     selected = clicked.dataset.name
   }

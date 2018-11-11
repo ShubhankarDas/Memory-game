@@ -16,14 +16,15 @@ body{
   position: relative;
   cursor: pointer;
   box-shadow: 0px 2px 14px #ccc;
-  transition: transform 1700ms,
-  opacity 1700ms,
-  visibility 1700ms;
+  transition: all 800ms ease;
+  transform-style: preserve-3d;
 }
 .front{
   background-color: #7480ad;
-  transition: visibility 800ms,
-  transform 800ms;
+  transition: transform 500ms ease;
+}
+.back{
+  transform: rotateY(180deg);
 }
 .front, .back{
   position: absolute;
@@ -32,11 +33,11 @@ body{
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  backface-visibility: hidden;
 }
 
 .selected{
-  visibility: hidden;
-  transform: rotateY(90deg);
+  transform: rotateY(180deg);
 }
 
 .match {
